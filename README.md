@@ -1,6 +1,6 @@
 # HTTP to S3
 
-This module streams a HTTP response to an S3 bucket. Both the reponse and the S3 upload are implemented using streams allowing extremely large responses to be retrieved without having to worry about memory / disk space limitations.
+This module streams a HTTP response to an S3 bucket. Both the HTTP response and the S3 upload are implemented using streams allowing large responses to be retrieved without having to worry about memory / disk space limitations.
 
 ## Requirements
 The module uses native async / await, therefore there's a node version requirement.
@@ -8,6 +8,9 @@ The module uses native async / await, therefore there's a node version requireme
 ***TODO:*** This could be easily transpiled to ES5 to support a greater range of node versions.
 
 * `Node > 8.x`
+
+## Installation
+`npm install --save http-to-s3`
 
 ## Usage
 
@@ -47,7 +50,7 @@ const options = {
     Key: "path/to/file.html"
   }
 };
-// Defaults to GET request
+
 const uploadResult = await httpS3Client.post("http://google.com/upload", options, postData)
 ```
 
@@ -56,7 +59,7 @@ Constructor details
 `new HttpToS3(options = {}) ⇒ Object`
 
 The constructor takes an options object with the following parameters:
-* s3 -- ***< S3 Client >*** -- an optional instantiated S3 client
+* s3 -- ***< S3 Client >*** -- an optional instantiated S3 client. See the AWS credentials section for an example.
 * s3Region -- ***string*** -- If provided and an S3 client isn't provided, a new client will be created with this as the default region
 * throwFailures -- ***boolean*** -- If set to true, the client will throw an error if the server returns a non-2xx response, otherwise an object is returned. Default: false
 
