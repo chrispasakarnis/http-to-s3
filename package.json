@@ -7,6 +7,10 @@
     "test": "jest --coverage"
   },
   "author": "Chris Pasakarnis",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/chrispasakarnis/http-to-s3"
+  },
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.127.0",
