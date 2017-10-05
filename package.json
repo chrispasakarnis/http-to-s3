@@ -1,0 +1,22 @@
+{
+  "name": "http-to-s3",
+  "version": "1.0.0",
+  "description": "A utility to stream http requests to a file on S3",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "Chris Pasakarnis",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.127.0",
+    "follow-redirects": "^1.2.5",
+    "stream-to-promise": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.7.4"
+  }
+}
