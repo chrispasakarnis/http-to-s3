@@ -8,7 +8,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-require("babel-polyfill");
+require("babel-polyfill"); // for regeneratorRuntime support on lower node versions
 
 var _require = require("aws-sdk"),
     S3 = _require.S3;
