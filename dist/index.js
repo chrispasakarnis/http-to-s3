@@ -18,7 +18,7 @@ var streamToS3 = require("./lib/streamToS3");
 var handleHttpError = require("./lib/handleHttpError");
 
 var _require2 = require("url"),
-    URL = _require2.URL;
+    parseUrl = _require2.parse;
 
 var HttpToS3 = function () {
   function HttpToS3() {
@@ -66,7 +66,7 @@ var HttpToS3 = function () {
                 // options under the key s3
 
                 // Create a full request option object from the URL and the options object
-                parsedUrl = new URL(url);
+                parsedUrl = parseUrl(url);
 
                 // Only http/https supported
 

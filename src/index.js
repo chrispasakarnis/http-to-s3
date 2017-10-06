@@ -3,7 +3,7 @@ const { S3 } = require("aws-sdk");
 const getHttpStream = require("./lib/getHttpStream");
 const streamToS3 = require("./lib/streamToS3");
 const handleHttpError = require("./lib/handleHttpError");
-const { URL } = require("url");
+const {parse: parseUrl}  = require("url");
 
 class HttpToS3 {
   constructor(options = {}) {
@@ -34,7 +34,7 @@ class HttpToS3 {
     // options under the key s3
 
     // Create a full request option object from the URL and the options object
-    const parsedUrl = new URL(url);
+    const parsedUrl = parseUrl(url);
 
     // Only http/https supported
     if(parsedUrl.protocol !== 'https:' && parsedUrl.protocol !== 'http:') {
