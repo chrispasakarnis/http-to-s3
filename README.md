@@ -2,13 +2,6 @@
 
 This module streams a HTTP response to an S3 bucket. Both the HTTP response and the S3 upload are implemented using streams allowing large responses to be retrieved without having to worry about memory / disk space limitations.
 
-## Requirements
-The module uses native async / await, therefore there's a node version requirement.
-
-***TODO:*** This could be easily transpiled to ES5 to support a greater range of node versions.
-
-* `Node > 8.x`
-
 ## Installation
 `npm install --save http-to-s3`
 
@@ -103,3 +96,7 @@ const httpS3Client = new HttpToS3({ s3: S3Client });
 Test specs live side-by-side with the file they're testing, following the standard Jest patter `file.test.js`.
 
 To run tests: `npm test`
+
+## build
+
+To build the dist files: `npm run build`

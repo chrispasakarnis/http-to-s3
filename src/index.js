@@ -1,3 +1,4 @@
+require("babel-polyfill");
 const { S3 } = require("aws-sdk");
 const getHttpStream = require("./lib/getHttpStream");
 const streamToS3 = require("./lib/streamToS3");

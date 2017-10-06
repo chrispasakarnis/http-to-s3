@@ -1,26 +1,34 @@
 {
   "name": "http-to-s3",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A utility to stream http requests to a file on S3",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rimraf dist/* && babel src --out-dir dist",
     "test": "jest --coverage"
   },
   "author": "Chris Pasakarnis",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/chrispasakarnis/http-to-s3"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrispasakarnis/http-to-s3"
   },
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.127.0",
+    "babel-polyfill": "^6.26.0",
     "follow-redirects": "^1.2.5",
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.8.0",
     "eslint-plugin-jest": "^21.2.0",
     "jest": "^21.2.1",
-    "prettier": "^1.7.4"
+    "prettier": "^1.7.4",
+    "rimraf": "^2.6.2"
   }
 }
