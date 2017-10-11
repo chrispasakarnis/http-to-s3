@@ -46,7 +46,7 @@ class HttpToS3 {
       port: parsedUrl.port,
       protocol: parsedUrl.protocol,
       host: parsedUrl.host,
-      path: parsedUrl.pathname + parsedUrl.search,
+      path: parsedUrl.pathname + (parsedUrl.search || ''), // convert null or undefined to blank string
       ...userOptions
     };
     const response = await getHttpStream(requestOptions, body);

@@ -83,8 +83,7 @@ var HttpToS3 = function () {
                   port: parsedUrl.port,
                   protocol: parsedUrl.protocol,
                   host: parsedUrl.host,
-                  path: parsedUrl.pathname + parsedUrl.search
-                }, userOptions);
+                  path: parsedUrl.pathname + (parsedUrl.search || '') }, userOptions);
                 _context.next = 7;
                 return getHttpStream(requestOptions, body);
 
