@@ -93,7 +93,7 @@ const httpS3Client = new HttpToS3({ s3: S3Client });
 
 
 ## Tests
-Test specs live side-by-side with the file they're testing, following the standard Jest patter `file.test.js`.
+Test specs live side-by-side with the file they're testing, following the standard Jest pattern `file.test.js`.
 
 To run tests: `npm test`
 
