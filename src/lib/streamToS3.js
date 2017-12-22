@@ -6,9 +6,11 @@ module.exports = (response, S3Client, s3Options = {}) => {
   // The promise() method is not supported on s3 upload, so we again explicitly
   // created promise that we can reject/resolve once the file is uploaded to S3
   return new Promise((resolve, reject) => {
-    S3Client.upload(uploadParams, options, (err, uploadResult) => {
-      if (err) return reject(err);
-      return resolve(uploadResult);
-    });
+    S3Client.upload(uploadParams, options)
+      .on('httpUploadProgress', s3Options.httpUploadProgress)
+      .send((err, uploadResult) => {
+        if (err) return reject(err);
+        return resolve(uploadResult);
+      });
   });
 };
