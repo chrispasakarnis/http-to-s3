@@ -18,8 +18,15 @@ describe("streamToS3", function () {
         switch (_context.prev = _context.next) {
           case 0:
             expect.assertions(2);
-            fakeClient.upload.mockImplementationOnce(function (params, opts, cb) {
-              cb(null, { success: true });
+            fakeClient.upload.mockImplementationOnce(function (params, opts) {
+              return {
+                on: function on() {
+                  return this;
+                },
+                send: function send(cb) {
+                  cb(null, { success: true });
+                }
+              };
             });
 
             _context.next = 4;
@@ -37,7 +44,7 @@ describe("streamToS3", function () {
               Body: "body",
               Bucket: "test-bucket",
               Key: "test-key"
-            }, { partSize: 10 * 1024 * 1024, queueSize: 1 }, expect.any(Function));
+            }, { partSize: 10 * 1024 * 1024, queueSize: 1 });
 
             expect(result).toEqual({ success: true });
 
@@ -58,9 +65,18 @@ describe("streamToS3", function () {
             expect.assertions(1);
             mockError = new Error("S3 Error");
 
-            fakeClient.upload.mockImplementationOnce(function (params, opts, cb) {
-              cb(mockError);
+
+            fakeClient.upload.mockImplementationOnce(function (params, opts) {
+              return {
+                on: function on() {
+                  return this;
+                },
+                send: function send(cb) {
+                  cb(mockError);
+                }
+              };
             });
+
             _context2.prev = 3;
             _context2.next = 6;
             return streamToS3("body", fakeClient);
@@ -81,5 +97,53 @@ describe("streamToS3", function () {
         }
       }
     }, _callee2, undefined, [[3, 8]]);
+  })));
+
+  it("Should call optional httpUploadProgress", _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+    var mockHttpUploadProgress, result;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            expect.assertions(3);
+            fakeClient.upload.mockImplementationOnce(function (params, opts) {
+              return {
+                on: function on(_, fn) {
+                  fn();
+                  return this;
+                },
+                send: function send(cb) {
+                  cb(null, { success: true });
+                }
+              };
+            });
+            mockHttpUploadProgress = jest.fn();
+            _context3.next = 5;
+            return streamToS3("body", fakeClient, {
+              Bucket: "test-bucket",
+              Key: "test-key",
+              httpUploadProgress: mockHttpUploadProgress
+            });
+
+          case 5:
+            result = _context3.sent;
+
+
+            // Ensure that the s3 upload is being called with the right params
+            expect(fakeClient.upload).toHaveBeenCalledWith({
+              Body: "body",
+              Bucket: "test-bucket",
+              Key: "test-key"
+            }, { partSize: 10 * 1024 * 1024, queueSize: 1 });
+
+            expect(mockHttpUploadProgress).toHaveBeenCalled();
+            expect(result).toEqual({ success: true });
+
+          case 9:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, undefined);
   })));
 });
