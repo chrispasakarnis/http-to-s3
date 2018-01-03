@@ -1,3 +1,5 @@
+const NOOP = () => {};
+
 module.exports = (response, S3Client, s3Options = {}) => {
   const uploadParams = { Body: response, ...s3Options };
   // TODO: s3 options could be parameterized and taken from the options object
@@ -7,7 +9,7 @@ module.exports = (response, S3Client, s3Options = {}) => {
   // created promise that we can reject/resolve once the file is uploaded to S3
   return new Promise((resolve, reject) => {
     S3Client.upload(uploadParams, options)
-      .on('httpUploadProgress', s3Options.httpUploadProgress)
+      .on('httpUploadProgress', s3Options.httpUploadProgress || NOOP)
       .send((err, uploadResult) => {
         if (err) return reject(err);
         return resolve(uploadResult);
