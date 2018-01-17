@@ -54,3 +54,6 @@ secrets/*
 
 # Local dev / scratch
 local.js
+
+# Dist
+dist/
