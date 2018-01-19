@@ -3,3 +3,7 @@ src/
 .babelrc
 dist/*.test.js
 dist/lib/*.test.js
+local.js
+coverage
+.gitignore
+.DS_Store

@@ -54,6 +54,7 @@ secrets/*
 
 # Local dev / scratch
 local.js
+.DS_Store
 
 # Dist
 dist/

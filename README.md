@@ -24,7 +24,7 @@ const uploadResult = await httpS3Client.get("http://example.com", options)
 
 Advanced examples:
 
-Post a body to the URL and stream the results to S3
+Post a body to the URL, stream the results to S3, and log upload progress
 ```
 const HttpToS3 = require("http-to-s3");
 const httpS3Client = new HttpToS3();
@@ -41,6 +41,11 @@ const options = {
   s3: {
     Bucket: "sample-bucket",
     Key: "path/to/file.html"
+  },
+  upload:{
+    uploadProgress: (progress) => {
+      console.log(`Uploaded ${progress.loaded} of ${progress.total} for ${progress.key}`)
+    }
   }
 };
 
@@ -65,6 +70,9 @@ It returns an object will the following methods:
     * Note, protocol, host, path, and port will be set automatically from the URL. If method is not set, it will be defaulted to `GET`
   * s3 -- ***object*** -- an options object that will be fed into the [S3 upload method](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
     * Simplest usage is to just provide `Bucket` and `Key`
+  * upload -- ***object***
+    * uploadProgress -- ***function (progress)*** -- an optional function that will receive httpUploadProgress events from the [S3 ManagedUpload](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3/ManagedUpload.html#event_details)
+
 * body -- ***string /  Buffer*** -- An optional string or buffer to be written to the request body
 
 `httpS3Client.post(url, options, body) ⇒ Object`

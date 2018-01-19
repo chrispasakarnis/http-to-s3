@@ -67,7 +67,7 @@ class HttpToS3 {
       return { method, url, ...parsedError };
     }
 
-    return await streamToS3(response, this.S3Client, options.s3);
+    return await streamToS3(response, this.S3Client, options.s3, options.upload);
   }
 
   // GET and POST convenience methods, just provides a default method and passes
