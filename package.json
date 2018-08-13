@@ -1,6 +1,6 @@
 {
   "name": "http-to-s3",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A utility to stream http requests to a file on S3",
   "main": "dist/index.js",
   "scripts": {
@@ -14,9 +14,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.231.1",
+    "aws-sdk": "^2.291.0",
+    "babel-eslint": "^8.2.6",
     "babel-polyfill": "^6.26.0",
-    "follow-redirects": "^1.3.0",
+    "follow-redirects": "^1.5.4",
     "stream-to-promise": "^2.2.0"
   },
   "jest": {
@@ -30,11 +31,11 @@
     "babel-core": "^6.26.3",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1",
-    "eslint-plugin-jest": "^21.15.1",
-    "jest": "^22.4.3",
-    "prettier": "^1.12.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.3.0",
+    "eslint-plugin-jest": "^21.21.0",
+    "jest": "^23.5.0",
+    "prettier": "^1.14.2",
     "rimraf": "^2.6.2"
   }
 }
