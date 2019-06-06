@@ -1,6 +1,6 @@
 {
   "name": "http-to-s3",
-  "version": "1.2.10",
+  "version": "2.0.0",
   "description": "A utility to stream http requests to a file on S3",
   "main": "dist/index.js",
   "scripts": {
@@ -14,28 +14,20 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.399.0",
-    "babel-eslint": "^8.2.6",
-    "babel-polyfill": "^6.26.0",
-    "follow-redirects": "^1.6.1",
+    "aws-sdk": "^2.468.0",
+    "follow-redirects": "^1.7.0",
     "stream-to-promise": "^2.2.0"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist"
-    ]
-  },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "eslint": "^5.13.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-jest": "^21.27.2",
-    "jest": "^23.6.0",
-    "prettier": "^1.16.4",
+    "jest": "^24.8.0",
+    "prettier": "^1.17.1",
     "rimraf": "^2.6.3"
   }
 }

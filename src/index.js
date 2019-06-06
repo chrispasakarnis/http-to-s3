@@ -1,4 +1,3 @@
-require("babel-polyfill"); // for regeneratorRuntime support on lower node versions
 const { S3 } = require("aws-sdk");
 const getHttpStream = require("./lib/getHttpStream");
 const streamToS3 = require("./lib/streamToS3");
